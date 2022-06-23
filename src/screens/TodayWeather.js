@@ -7,7 +7,7 @@ import InputFormImage from "../components/InputFormImage";
 import InputFormText from "../components/InputFormText";
 import Footer from "../components/Footer";
 
-const TodayWeather = () => {
+const TodayWeather = ({ prefectureData }) => {
   return (
     <>
       <Header />

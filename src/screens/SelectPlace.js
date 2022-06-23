@@ -1,26 +1,24 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Prefectures from "../data/PrefecturesData";
 
 const SelectPlace = () => {
+  // const [prefectureData, setPrefecture] = useState([]);
   const submitPrefecture = (e) => {
-    // const [fetchdata, setFetchData] = useState([]);
     const API_KEY = "6df4e5005ffa1b5e6fbed71113e646a7";
-    const PrefectureValue = "Tokyo";
+    const PrefectureValue = e.target.value;
     const EndPointUrl =
       "https://api.openweathermap.org/data/2.5/forecast?" +
       `q=${PrefectureValue}&appid=${API_KEY}`;
-    console.log(EndPointUrl);
 
     fetch(EndPointUrl)
       .then((res) => {
         return res.json();
       })
-      .then((data) => console.log(data));
+      .then((result) => console.log(result));
   };
-
   return (
     <>
       <Header />
@@ -28,9 +26,12 @@ const SelectPlace = () => {
         <div style={style.SelectWrapper}>
           <h1 style={style.SelectTitle}>あなたの場所は？</h1>
           <div style={style.SelecAria}>
-            <form onSubmit={(e) => submitPrefecture(e)}>
-              <select style={style.SelectPullDown}>
-                {Prefectures.map((prefecture, id) => {
+            <form onClick={(e) => submitPrefecture(e)}>
+              <select
+                style={style.SelectPullDown}
+                defaultValue={Prefectures.currentValue}
+              >
+                {Prefectures.list.map((prefecture, id) => {
                   return (
                     <option value={prefecture.value}>{prefecture.name}</option>
                   );
