@@ -14,6 +14,7 @@ const style = {
     textAlign: "center",
     padding: "5px 0",
     fontSize: "10px",
+    height: "20px",
   },
 };
 

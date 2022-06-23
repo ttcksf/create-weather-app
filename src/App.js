@@ -6,7 +6,7 @@ import TodayWeather from "./screens/TodayWeather";
 
 const App = () => {
   return (
-    <>
+    <div className="body">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SelectPlace />} />
@@ -14,7 +14,7 @@ const App = () => {
           <Route path="/future-weather/" element={<FutureWeather />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 

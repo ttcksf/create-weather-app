@@ -4,8 +4,15 @@
   margin: 0;
   padding: 0;
 }
-main {
+.body {
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+main {
+  height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   width: 100%;

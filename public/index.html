@@ -46,4 +46,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    window.addEventListener("resize", () => {
+      //ウィンドウ全体の高さを取得して、0.01倍しておく
+      let vh = window.innerHeight * 0.01;
+      //css側で設定していた変数--vhに変数vhの値をセットする
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  </script>
 </html>

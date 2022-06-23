@@ -18,6 +18,7 @@ const style = {
     width: "100%",
     maxWidth: "100%",
     borderBottom: "1px solid #333",
+    height: "100px",
   },
   headerLogo: {
     textAlign: "center",

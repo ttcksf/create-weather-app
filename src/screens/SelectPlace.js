@@ -39,7 +39,6 @@ const style = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
   },
   SelectWrapper: {
     width: "80%",
