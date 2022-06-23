@@ -5,8 +5,8 @@ import Header from "../components/Header";
 import Prefectures from "../data/PrefecturesData";
 
 const SelectPlace = () => {
-  // const [prefectureData, setPrefecture] = useState([]);
-  const submitPrefecture = (e) => {
+  const [prefectureData, setPrefecture] = useState("");
+  const changePrefecture = (e) => {
     const API_KEY = "6df4e5005ffa1b5e6fbed71113e646a7";
     const PrefectureValue = e.target.value;
     const EndPointUrl =
@@ -26,10 +26,11 @@ const SelectPlace = () => {
         <div style={style.SelectWrapper}>
           <h1 style={style.SelectTitle}>あなたの場所は？</h1>
           <div style={style.SelecAria}>
-            <form onClick={(e) => submitPrefecture(e)}>
+            <form>
               <select
                 style={style.SelectPullDown}
                 defaultValue={Prefectures.currentValue}
+                onChange={(e) => changePrefecture(e)}
               >
                 {Prefectures.list.map((prefecture, id) => {
                   return (
