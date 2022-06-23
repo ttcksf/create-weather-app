@@ -1,4 +1,3 @@
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import VerySun from "../img/very-sun.png";
 import SunCloudHalf from "../img/sun-cloud-half.png";

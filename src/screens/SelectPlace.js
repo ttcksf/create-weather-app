@@ -2,19 +2,33 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import ClickMark from "../img/clickmark.png";
 import Prefectures from "../data/PrefecturesData";
 
 const SelectPlace = () => {
-  console.log(Prefectures);
+  const submitPrefecture = (e) => {
+    // const [fetchdata, setFetchData] = useState([]);
+    const API_KEY = "6df4e5005ffa1b5e6fbed71113e646a7";
+    const PrefectureValue = "Tokyo";
+    const EndPointUrl =
+      "https://api.openweathermap.org/data/2.5/forecast?" +
+      `q=${PrefectureValue}&appid=${API_KEY}`;
+    console.log(EndPointUrl);
+
+    fetch(EndPointUrl)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => console.log(data));
+  };
+
   return (
     <>
       <Header />
-      <main>
-        <div style={style.SelectContainer}>
-          <div style={style.SelectWrapper}>
-            <h1 style={style.SelectTitle}>あなたの場所は？</h1>
-            <div style={style.SelecAria}>
+      <div className="container">
+        <div style={style.SelectWrapper}>
+          <h1 style={style.SelectTitle}>あなたの場所は？</h1>
+          <div style={style.SelecAria}>
+            <form onSubmit={(e) => submitPrefecture(e)}>
               <select style={style.SelectPullDown}>
                 {Prefectures.map((prefecture, id) => {
                   return (
@@ -22,24 +36,19 @@ const SelectPlace = () => {
                   );
                 })}
               </select>
-              <Link className="btn" to={`/today-weather`}>
-                送信
-              </Link>
-            </div>
+            </form>
+            <Link className="btn" to={`/today-weather`}>
+              送信
+            </Link>
           </div>
         </div>
-      </main>
+      </div>
       <Footer />
     </>
   );
 };
 
 const style = {
-  SelectContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   SelectWrapper: {
     width: "80%",
   },
