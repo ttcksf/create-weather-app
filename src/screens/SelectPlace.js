@@ -1,23 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Prefectures from "../data/PrefecturesData";
 
 const SelectPlace = () => {
-  // const [prefectureData, setPrefecture] = useState([]);
+  const [prefecture, setPrefecture] = useState("");
   const changePrefecture = (e) => {
-    const API_KEY = "6df4e5005ffa1b5e6fbed71113e646a7";
-    const PrefectureValue = e.target.value;
-    const EndPointUrl =
-      "https://api.openweathermap.org/data/2.5/forecast?" +
-      `q=${PrefectureValue}&appid=${API_KEY}`;
-
-    fetch(EndPointUrl)
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => console.log(result));
+    setPrefecture(e.target.value);
   };
   return (
     <>
@@ -29,7 +19,6 @@ const SelectPlace = () => {
             <form>
               <select
                 style={style.SelectPullDown}
-                defaultValue={Prefectures.currentValue}
                 onChange={(e) => changePrefecture(e)}
               >
                 {Prefectures.list.map((prefecture, id) => {
@@ -41,7 +30,7 @@ const SelectPlace = () => {
                 })}
               </select>
             </form>
-            <Link className="btn" to={`/today-weather`}>
+            <Link className="btn" to={`/today-weather`} state={prefecture}>
               送信
             </Link>
           </div>

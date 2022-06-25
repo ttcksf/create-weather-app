@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import VerySun from "../img/very-sun.png";
 import SunCloudHalf from "../img/sun-cloud-half.png";
 import CloudLittleSun from "../img/cloud-littlesun.png";
@@ -8,9 +9,11 @@ import Good from "../img/good.png";
 import Bad from "../img/bad.png";
 import VeryBad from "../img/very-bad.png";
 
-const Table = () => {
+const Table = ({ weatherResult }) => {
   return (
     <div style={style.tableWrap}>
+      {weatherResult.city && <div>{weatherResult.city.name}</div>}
+
       <table style={style.table}>
         <tbody>
           <tr>
