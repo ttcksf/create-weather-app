@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Menu = () => {
+const Menu = ({ weatherResult }) => {
   return (
     <div style={style.MenuLists}>
       <div>
@@ -11,7 +11,9 @@ const Menu = () => {
       </div>
       <div>
         <h1 style={style.CenterMenu}>
-          <span>6月10日</span> <span>京都府</span>の天気予報
+          <span>6月10日</span>
+          {weatherResult.city && <span>{weatherResult.city.name}</span>}
+          の天気予報
         </h1>
       </div>
       <div>

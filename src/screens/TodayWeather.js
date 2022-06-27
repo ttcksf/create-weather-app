@@ -13,7 +13,7 @@ const TodayWeather = () => {
   const prefectureValue = location.state;
   const API_KEY = process.env.React_APP_OPENWEATHERMAP_API_KEY;
   const MAIN_URL = process.env.React_APP_API_URL;
-  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${prefectureValue}&appid=${API_KEY}`;
+  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${prefectureValue}&appid=${API_KEY}&lang=ja`;
 
   const [weatherResult, setWeatherResult] = useState([]);
 
@@ -37,7 +37,7 @@ const TodayWeather = () => {
       <Header />
       <div>
         <div style={style.TodayWrapper}>
-          <Menu />
+          <Menu weatherResult={weatherResult} />
 
           <Table weatherResult={weatherResult} />
           <InputFormImage />
