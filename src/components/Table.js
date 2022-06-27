@@ -8,8 +8,10 @@ import VeryGood from "../img/very-good.png";
 import Good from "../img/good.png";
 import Bad from "../img/bad.png";
 import VeryBad from "../img/very-bad.png";
+import Aomori from "../data/TestAomori.json";
 
 const Table = ({ weatherResult }) => {
+  console.log(weatherResult.list.dt_txt);
   return (
     <div style={style.tableWrap}>
       {weatherResult.city && <div>{weatherResult.city.name}</div>}
