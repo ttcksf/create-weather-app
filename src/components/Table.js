@@ -11,7 +11,12 @@ import VeryBad from "../img/very-bad.png";
 import Aomori from "../data/TestAomori.json";
 
 const Table = ({ weatherResult }) => {
-  console.log(weatherResult.list.dt_txt);
+  console.log("日付" + weatherResult.list[0].dt_txt);
+  console.log("天気" + weatherResult.list[0].weather[0].description);
+  console.log("最高気温" + Math.floor(weatherResult.list[0].main.temp_max));
+  console.log("最低気温" + Math.floor(weatherResult.list[0].main.temp_min));
+  console.log("降水確率" + weatherResult.list[0].pop * 100 + "%");
+  console.log("気圧" + weatherResult.list[0].main.grnd_level);
   return (
     <div style={style.tableWrap}>
       {weatherResult.city && <div>{weatherResult.city.name}</div>}

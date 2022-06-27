@@ -18,15 +18,15 @@ const TodayWeather = () => {
   const [weatherResult, setWeatherResult] = useState([]);
 
   //第一引数にコールバック関数、第二引数にタイミング（空配列はロード時）
-  const fetchData = () => {
-    axios
-      .get(requestURL)
-      .then((response) => setWeatherResult(response.data))
-      .catch((error) => console.log(error));
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // const fetchData = () => {
+  //   axios
+  //     // .get(requestURL)
+  //     .then((response) => setWeatherResult(response.data))
+  //     .catch((error) => console.log(error));
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   console.log("都道府県: " + prefectureValue);
   console.log("URL: " + requestURL);
