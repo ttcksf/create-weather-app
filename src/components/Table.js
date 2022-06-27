@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 import VerySun from "../img/very-sun.png";
 import SunCloudHalf from "../img/sun-cloud-half.png";
 import CloudLittleSun from "../img/cloud-littlesun.png";
@@ -8,31 +7,42 @@ import VeryGood from "../img/very-good.png";
 import Good from "../img/good.png";
 import Bad from "../img/bad.png";
 import VeryBad from "../img/very-bad.png";
-import Aomori from "../data/TestAomori.json";
 
 const Table = ({ weatherResult }) => {
-  console.log("日付" + weatherResult.list[0].dt_txt);
-  console.log("天気" + weatherResult.list[0].weather[0].description);
-  console.log("最高気温" + Math.floor(weatherResult.list[0].main.temp_max));
-  console.log("最低気温" + Math.floor(weatherResult.list[0].main.temp_min));
-  console.log("降水確率" + weatherResult.list[0].pop * 100 + "%");
-  console.log("気圧" + weatherResult.list[0].main.grnd_level);
+  // console.log(weatherResult.list.dt_txt.substring(11, 16));
   return (
     <div style={style.tableWrap}>
-      {weatherResult.city && <div>{weatherResult.city.name}</div>}
-
       <table style={style.table}>
         <tbody>
           <tr>
             <th style={style.th}>日付</th>
-            <th style={style.th}>6:00</th>
-            <th style={style.th}>9:00</th>
-            <th style={style.th}>12:00</th>
-            <th style={style.th}>15:00</th>
-            <th style={style.th}>18:00</th>
-            <th style={style.th}>21:00</th>
-            <th style={style.th}>0:00</th>
-            <th style={style.th}>3:00</th>
+            <th style={style.th}>
+              {weatherResult.list[0].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[1].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[2].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[3].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[4].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[5].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[6].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[7].dt_txt.substring(11, 16)}
+            </th>
+            <th style={style.th}>
+              {weatherResult.list[8].dt_txt.substring(11, 16)}
+            </th>
           </tr>
           <tr>
             <td style={style.tdFirst}>天気</td>
@@ -41,132 +51,123 @@ const Table = ({ weatherResult }) => {
                 <img src={VerySun} alt="" />
               </p>
               <p>
-                <span className="cRed">30</span> /{" "}
-                <span className="cBlue">20</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[0].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>0%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+            </td>
+            <td style={style.tdFirst}>
+              <p>
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    weatherResult.list[0].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
+              </p>
+              <p>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[1].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
+              </p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={SunCloudHalf} alt="" />
               </p>
               <p>
-                <span className="cRed">27</span> /{" "}
-                <span className="cBlue">21</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[2].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>10%</p>
-            </td>
-            <td style={style.tdFirst}>
-              <p>
-                <img src={SunCloudHalf} alt="" />
-              </p>
-              <p>
-                <span className="cRed">28</span> /{" "}
-                <span className="cBlue">22</span>
-              </p>
-              <p>10%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={CloudLittleSun} alt="" />
               </p>
               <p>
-                <span className="cRed">26</span> /{" "}
-                <span className="cBlue">19</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[3].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>30%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={Rain} alt="" />
               </p>
               <p>
-                <span className="cRed">26</span> /{" "}
-                <span className="cBlue">18</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[4].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>100%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={CloudLittleSun} alt="" />
               </p>
               <p>
-                <span className="cRed">28</span> /{" "}
-                <span className="cBlue">20</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[5].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>20%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={CloudLittleSun} alt="" />
               </p>
               <p>
-                <span className="cRed">28</span> /{" "}
-                <span className="cBlue">20</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[6].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>10%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
                 <img src={SunCloudHalf} alt="" />
               </p>
               <p>
-                <span className="cRed">28</span> /{" "}
-                <span className="cBlue">18</span>
+                <span className="cRed">
+                  {Math.floor(weatherResult.list[7].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                </span>
               </p>
-              <p>30%</p>
+              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
             </td>
           </tr>
           <tr>
-            <td style={style.tdSecond}>気圧</td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={VeryGood} alt="" />
-              </p>
-              <p>大変良い</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={VeryGood} alt="" />
-              </p>
-              <p>大変良い</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={Good} alt="" />
-              </p>
-              <p>良い</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={Bad} alt="" />
-              </p>
-              <p>不調</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={VeryBad} alt="" />
-              </p>
-              <p>絶不調</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={Good} alt="" />
-              </p>
-              <p>良い</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={Good} alt="" />
-              </p>
-              <p>良い</p>
-            </td>
-            <td style={style.tdSecond}>
-              <p>
-                <img src={Good} alt="" />
-              </p>
-              <p>良い</p>
-            </td>
+            <td>気圧</td>
           </tr>
         </tbody>
       </table>

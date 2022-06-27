@@ -17,20 +17,23 @@ const TodayWeather = () => {
 
   const [weatherResult, setWeatherResult] = useState([]);
 
-  //第一引数にコールバック関数、第二引数にタイミング（空配列はロード時）
-  // const fetchData = () => {
-  //   axios
-  //     // .get(requestURL)
-  //     .then((response) => setWeatherResult(response.data))
-  //     .catch((error) => console.log(error));
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  // 第一引数にコールバック関数、第二引数にタイミング（空配列はロード時）
+  const fetchData = () => {
+    axios
+      .get(requestURL)
+      .then((response) => {
+        setWeatherResult(response.data);
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.log("connect error");
+      });
+  };
 
-  console.log("都道府県: " + prefectureValue);
-  console.log("URL: " + requestURL);
-  console.log("結果: ");
+  useEffect(() => {
+    fetchData();
+  }, []);
+  console.log("props");
   console.log(weatherResult);
   return (
     <>
@@ -38,7 +41,6 @@ const TodayWeather = () => {
       <div>
         <div style={style.TodayWrapper}>
           <Menu weatherResult={weatherResult} />
-
           <Table weatherResult={weatherResult} />
           <InputFormImage />
           <InputFormText />
