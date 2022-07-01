@@ -1,13 +1,51 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+input[type="radio"] + label:before {
+  content: "";
+  display: inline-block;
+  background-size: contain;
+  width: 180px;
+  height: 180px;
+}
+input[type="radio"][value="VeryGood"] + label:before {
+  background-image: url("./img/very-good.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+input[type="radio"][value="Good"] + label:before {
+  background-image: url("./img/good.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+input[type="radio"][value="Bad"] + label:before {
+  background-image: url("./img/bad.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+input[type="radio"][value="VeryBad"] + label:before {
+  background-image: url("./img/very-bad.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+input[type="radio"]:checked + label::before {
+  border: 3px solid #000;
+  box-sizing: border-box;
+}
+input[type="radio"] {
+  display: none;
 }
