@@ -14,19 +14,19 @@ const InputFormImage = () => {
             value="VeryGood"
             id="VeryGood"
           />
-          <label style={style.SelectImageLabel} for="VeryGood">
+          <label style={style.SelectImageLabel} htmlFor="VeryGood">
             大変良い
           </label>
           <input type="radio" name="sizeSelect" value="Good" id="Good" />
-          <label style={style.SelectImageLabel} for="Good">
+          <label style={style.SelectImageLabel} htmlFor="Good">
             良い
           </label>
           <input type="radio" name="sizeSelect" value="Bad" id="Bad" />
-          <label style={style.SelectImageLabel} for="Bad">
+          <label style={style.SelectImageLabel} htmlFor="Bad">
             不調
           </label>
           <input type="radio" name="sizeSelect" value="VeryBad" id="VeryBad" />
-          <label style={style.SelectImageLabel} for="VeryBad">
+          <label style={style.SelectImageLabel} htmlFor="VeryBad">
             絶不調
           </label>
         </div>

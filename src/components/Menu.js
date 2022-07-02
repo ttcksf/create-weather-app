@@ -1,18 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Menu = ({ weatherResult }) => {
+const Menu = ({ TodayWeatherResult }) => {
+  const navigate = useNavigate();
+  const backButton = () => {
+    navigate("/");
+  };
   return (
     <div style={style.MenuLists}>
       <div>
-        <Link style={style.LightMenu} to={`/`}>
+        <button style={style.LightMenu} onClick={() => backButton()}>
           ＜戻る
-        </Link>
+        </button>
       </div>
       <div>
         <h1 style={style.CenterMenu}>
           <span>6月10日</span>
-          {weatherResult.city && <span>{weatherResult.city.name}</span>}
+          {TodayWeatherResult.city && (
+            <span>{TodayWeatherResult.city.name}</span>
+          )}
           の天気予報
         </h1>
       </div>

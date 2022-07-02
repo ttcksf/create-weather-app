@@ -1,14 +1,6 @@
 import React from "react";
-import VerySun from "../img/very-sun.png";
-import SunCloudHalf from "../img/sun-cloud-half.png";
-import CloudLittleSun from "../img/cloud-littlesun.png";
-import Rain from "../img/rain.png";
-import VeryGood from "../img/very-good.png";
-import Good from "../img/good.png";
-import Bad from "../img/bad.png";
-import VeryBad from "../img/very-bad.png";
 
-const Table = ({ weatherResult }) => {
+const Table = ({ TodayWeatherResult }) => {
   // console.log(weatherResult.list.dt_txt.substring(11, 16));
   return (
     <div style={style.tableWrap}>
@@ -17,55 +9,38 @@ const Table = ({ weatherResult }) => {
           <tr>
             <th style={style.th}>日付</th>
             <th style={style.th}>
-              {weatherResult.list[0].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[0].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[1].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[1].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[2].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[2].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[3].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[3].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[4].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[4].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[5].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[5].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[6].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[6].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
-              {weatherResult.list[7].dt_txt.substring(11, 16)}
-            </th>
-            <th style={style.th}>
-              {weatherResult.list[8].dt_txt.substring(11, 16)}
+              {TodayWeatherResult.list[7].dt_txt.substring(11, 16)}
             </th>
           </tr>
           <tr>
             <td style={style.tdFirst}>天気</td>
             <td style={style.tdFirst}>
               <p>
-                <img src={VerySun} alt="" />
-              </p>
-              <p>
-                <span className="cRed">
-                  {Math.floor(weatherResult.list[0].main.temp_max)}
-                </span>
-                <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
-                </span>
-              </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
-            </td>
-            <td style={style.tdFirst}>
-              <p>
                 <img
                   src={
                     "http://openweathermap.org/img/wn/" +
-                    weatherResult.list[0].weather[0].icon +
+                    TodayWeatherResult.list[0].weather[0].icon +
                     ".png"
                   }
                   alt=""
@@ -73,101 +48,188 @@ const Table = ({ weatherResult }) => {
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[1].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[0].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[0].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[0].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={SunCloudHalf} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[1].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[2].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[1].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[1].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[1].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={CloudLittleSun} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[2].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[3].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[2].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[2].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[2].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={Rain} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[3].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[4].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[3].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[3].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[3].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={CloudLittleSun} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[4].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[5].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[4].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[4].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[4].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={CloudLittleSun} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[5].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[6].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[5].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[5].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[5].pop * 100 + "%"}</p>
             </td>
             <td style={style.tdFirst}>
               <p>
-                <img src={SunCloudHalf} alt="" />
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[6].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
               </p>
               <p>
                 <span className="cRed">
-                  {Math.floor(weatherResult.list[7].main.temp_max)}
+                  {Math.floor(TodayWeatherResult.list[6].main.temp_max)}
                 </span>
                 <span className="cBlue">
-                  {Math.floor(weatherResult.list[0].main.temp_min)}
+                  {Math.floor(TodayWeatherResult.list[6].main.temp_min)}
                 </span>
               </p>
-              <p>{weatherResult.list[0].pop * 100 + "%"}</p>
+              <p>{TodayWeatherResult.list[6].pop * 100 + "%"}</p>
+            </td>
+            <td style={style.tdFirst}>
+              <p>
+                <img
+                  src={
+                    "http://openweathermap.org/img/wn/" +
+                    TodayWeatherResult.list[7].weather[0].icon +
+                    ".png"
+                  }
+                  alt=""
+                />
+              </p>
+              <p>
+                <span className="cRed">
+                  {Math.floor(TodayWeatherResult.list[7].main.temp_max)}
+                </span>
+                <span className="cBlue">
+                  {Math.floor(TodayWeatherResult.list[7].main.temp_min)}
+                </span>
+              </p>
+              <p>{TodayWeatherResult.list[7].pop * 100 + "%"}</p>
             </td>
           </tr>
           <tr>
-            <td>気圧</td>
+            <td style={style.tdSecond}>気圧</td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[0].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[1].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[2].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[3].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[4].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[5].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[6].wind.speed} km/h
+            </td>
+            <td style={style.tdSecond}>
+              {TodayWeatherResult.list[7].wind.speed} km/h
+            </td>
           </tr>
         </tbody>
       </table>

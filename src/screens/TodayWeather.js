@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Table from "../components/Table";
@@ -8,14 +7,16 @@ import InputFormText from "../components/InputFormText";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 
-const TodayWeather = () => {
-  const location = useLocation();
-  const prefectureValue = location.state;
+const TodayWeather = ({ prefecture }) => {
   const API_KEY = process.env.React_APP_OPENWEATHERMAP_API_KEY;
   const MAIN_URL = process.env.React_APP_API_URL;
-  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${prefectureValue}&appid=${API_KEY}&lang=ja&units=metric`;
+  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${prefecture}&appid=${API_KEY}&lang=ja&units=metric`;
+  // console.log("prefecture: ");
+  // console.log(prefecture);
+  // console.log("requestURL: ");
+  // console.log(requestURL);
 
-  const [weatherResult, setWeatherResult] = useState([]);
+  const [weatherResult, setWeatherResult] = useState({});
 
   // 第一引数にコールバック関数、第二引数にタイミング（空配列はロード時）
   const fetchData = () => {
@@ -23,29 +24,33 @@ const TodayWeather = () => {
       .get(requestURL)
       .then((response) => {
         setWeatherResult(response.data);
-        console.log(response.data);
+        console.log(requestURL);
       })
       .catch(() => {
-        console.log("connect error");
+        console.log("connect error: " + requestURL);
       });
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
-  console.log("props");
+  }, [setWeatherResult]);
+
+  console.log("weatherResult: ");
   console.log(weatherResult);
+
   return (
     <>
       <Header />
       <div>
-        <div style={style.TodayWrapper}>
-          <Menu weatherResult={weatherResult} />
-          <Table weatherResult={weatherResult} />
-          <InputFormImage />
-          <InputFormText />
-          {/* <Table /> */}
-        </div>
+        {weatherResult.list && (
+          <div style={style.TodayWrapper}>
+            <Menu TodayWeatherResult={weatherResult} />
+            <Table TodayWeatherResult={weatherResult} />
+            <InputFormImage />
+            <InputFormText />
+            <Table TodayWeatherResult={weatherResult} />
+          </div>
+        )}
       </div>
       <Footer />
     </>
