@@ -1,12 +1,28 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Menu from "../components/Menu";
+import Table from "../components/Table";
+import Footer from "../components/Footer";
 
-const FutureWeather = () => {
+const FutureWeather = ({ weatherResult }) => {
   return (
-    <div>
-      <Link to={`/today-weather`}>＜戻る</Link>
-    </div>
+    <>
+      <Header />
+      <div>
+        <div style={style.FutureWrapper}>
+          <Menu TodayWeatherResult={weatherResult} />
+          <Table TodayWeatherResult={weatherResult} />
+          <Table TodayWeatherResult={weatherResult} />
+        </div>
+      </div>
+      <Footer />
+    </>
   );
 };
-
+const style = {
+  FutureWrapper: {
+    width: "80%",
+    margin: "0 auto",
+  },
+};
 export default FutureWeather;
