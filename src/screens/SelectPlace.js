@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Prefectures from "../data/PrefecturesData";
@@ -11,8 +10,16 @@ const SelectPlace = () => {
     setPrefecture(e.target.value);
   };
 
-  console.log("pre: ");
-  console.log(prefecture);
+  const navigate = useNavigate();
+
+  const submitPrefecture = () => {
+    navigate("today-weather", {
+      state: {
+        prefecture: prefecture,
+      },
+    });
+  };
+
   return (
     <>
       <Header />
@@ -34,10 +41,12 @@ const SelectPlace = () => {
                 })}
               </select>
             </form>
+            {console.log("pre: ")}
+            {console.log(prefecture)}
 
-            <Link to={"/today-weather"}>
-              <button className="btn">送信</button>
-            </Link>
+            <button className="btn" onClick={submitPrefecture}>
+              送信
+            </button>
           </div>
         </div>
       </div>
