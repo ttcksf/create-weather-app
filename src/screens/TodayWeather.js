@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Table from "../components/Table";
@@ -8,13 +9,16 @@ import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 
 const TodayWeather = ({ prefecture }) => {
+  const location = useLocation();
+  console.log("location: ");
+  console.log(location.state.prefecture);
+  const PREFECTURE_KEY = location.state.prefecture;
   const API_KEY = process.env.React_APP_OPENWEATHERMAP_API_KEY;
   const MAIN_URL = process.env.React_APP_API_URL;
-  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${prefecture}&appid=${API_KEY}&lang=ja&units=metric`;
-  // console.log("prefecture: ");
-  // console.log(prefecture);
-  // console.log("requestURL: ");
-  // console.log(requestURL);
+  const requestURL = `${MAIN_URL}/data/2.5/forecast?q=${PREFECTURE_KEY}&appid=${API_KEY}&lang=ja&units=metric`;
+
+  console.log("requestURL: ");
+  console.log(requestURL);
 
   const [weatherResult, setWeatherResult] = useState({});
 
@@ -24,7 +28,6 @@ const TodayWeather = ({ prefecture }) => {
       .get(requestURL)
       .then((response) => {
         setWeatherResult(response.data);
-        console.log(requestURL);
       })
       .catch(() => {
         console.log("connect error: " + requestURL);
@@ -34,9 +37,6 @@ const TodayWeather = ({ prefecture }) => {
   useEffect(() => {
     fetchData();
   }, [setWeatherResult]);
-
-  console.log("weatherResult: ");
-  console.log(weatherResult);
 
   return (
     <>
