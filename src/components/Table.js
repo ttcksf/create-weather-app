@@ -1,7 +1,29 @@
 import React from "react";
+import Bad from "./HumanIcons/Bad";
+import Good from "./HumanIcons/Good";
+import VeryBad from "./HumanIcons/VeryBad";
+import VeryGood from "./HumanIcons/VeryGood";
 
 const Table = ({ TodayWeatherResult }) => {
-  // console.log(weatherResult.list.dt_txt.substring(11, 16));
+  const HumanIconsPattern = (i) => {
+    if (TodayWeatherResult.list[i].main.grnd_level >= 1012) {
+      return <VeryGood />;
+    } else if (
+      TodayWeatherResult.list[i].main.grnd_level >= 1009 &&
+      TodayWeatherResult.list[i].main.grnd_level < 1012
+    ) {
+      return <Good />;
+    } else if (
+      TodayWeatherResult.list[i].main.grnd_level >= 1003 &&
+      TodayWeatherResult.list[i].main.grnd_level < 1009
+    ) {
+      return <Bad />;
+    } else if (TodayWeatherResult.list[i].main.grnd_level < 1003) {
+      return <VeryBad />;
+    } else {
+      return <Good />;
+    }
+  };
   return (
     <div style={style.tableWrap}>
       <table style={style.table}>
@@ -161,6 +183,7 @@ const Table = ({ TodayWeatherResult }) => {
               </p>
               <p>{TodayWeatherResult.list[5].pop * 100 + "%"}</p>
             </td>
+
             <td style={style.tdFirst}>
               <p>
                 <img
@@ -206,30 +229,14 @@ const Table = ({ TodayWeatherResult }) => {
           </tr>
           <tr>
             <td style={style.tdSecond}>気圧</td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[0].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[1].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[2].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[3].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[4].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[5].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[6].wind.speed} km/h
-            </td>
-            <td style={style.tdSecond}>
-              {TodayWeatherResult.list[7].wind.speed} km/h
-            </td>
+            <td style={style.tdSecond}>{HumanIconsPattern(0)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(1)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(2)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(3)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(4)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(5)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(6)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(7)}</td>
           </tr>
         </tbody>
       </table>
