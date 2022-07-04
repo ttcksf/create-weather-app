@@ -25,10 +25,9 @@ const TodayWeather = ({ prefecture }) => {
   // 第一引数にコールバック関数、第二引数にタイミング（空配列はロード時）
   const fetchData = () => {
     axios
-      // .get(requestURL)
+      .get(requestURL)
       .then((response) => {
         setWeatherResult(response.data);
-        console.log(requestURL);
       })
       .catch(() => {
         console.log("connect error: " + requestURL);
