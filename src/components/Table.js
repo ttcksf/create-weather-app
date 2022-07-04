@@ -5,6 +5,18 @@ import VeryBad from "./HumanIcons/VeryBad";
 import VeryGood from "./HumanIcons/VeryGood";
 
 const Table = ({ TodayWeatherResult }) => {
+  const TodayWeatherDate = () => {
+    let times = [];
+    for (let i = 0; i < 8; i++) {
+      times.push(
+        <th style={style.th} key={i}>
+          {TodayWeatherResult.list[i].dt_txt.substring(11, 16)}
+        </th>
+      );
+    }
+    return times;
+  };
+
   const HumanIconsPattern = (i) => {
     if (TodayWeatherResult.list[i].main.grnd_level >= 1012) {
       return <VeryGood />;
@@ -30,7 +42,8 @@ const Table = ({ TodayWeatherResult }) => {
         <tbody>
           <tr>
             <th style={style.th}>日付</th>
-            <th style={style.th}>
+            {TodayWeatherDate()}
+            {/* <th style={style.th}>
               {TodayWeatherResult.list[0].dt_txt.substring(11, 16)}
             </th>
             <th style={style.th}>
@@ -53,7 +66,7 @@ const Table = ({ TodayWeatherResult }) => {
             </th>
             <th style={style.th}>
               {TodayWeatherResult.list[7].dt_txt.substring(11, 16)}
-            </th>
+            </th> */}
           </tr>
           <tr>
             <td style={style.tdFirst}>天気</td>
