@@ -1,18 +1,21 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../components/Header";
-import Menu from "../components/Menu";
 import Table from "../components/Table";
 import Footer from "../components/Footer";
+import MenuBack from "../components/Menu/MenuBack";
 
-const FutureWeather = ({ weatherResult }) => {
+const FutureWeather = () => {
+  const location = useLocation();
+  console.log("futurelocation: ");
+  console.log(location);
+
   return (
     <>
       <Header />
       <div>
         <div style={style.FutureWrapper}>
-          <Menu TodayWeatherResult={weatherResult} />
-          <Table TodayWeatherResult={weatherResult} />
-          <Table TodayWeatherResult={weatherResult} />
+          <MenuBack />
         </div>
       </div>
       <Footer />
