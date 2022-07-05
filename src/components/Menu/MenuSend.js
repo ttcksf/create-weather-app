@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MenuSend = () => {
+const MenuSend = ({ onClick }) => {
   return (
     <div style={style.RightMenu}>
-      <Link to={`/future-weather`}>明日以降の天気</Link>
+      <button onClick={onClick}>明日以降の天気</button>
     </div>
   );
 };

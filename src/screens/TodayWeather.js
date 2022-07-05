@@ -40,16 +40,15 @@ const TodayWeather = () => {
     fetchData();
   }, []);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const sendButton = () => {
-  //   navigate("/future-weather", {
-  //     state: {
-  //       prefecture: PREFECTURE_KEY,
-  //       weatherResult: weatherResult,
-  //     },
-  //   });
-  // };
+  const sendButton = () => {
+    navigate("/future-weather", {
+      state: {
+        weatherResult: weatherResult,
+      },
+    });
+  };
 
   return (
     <>
@@ -60,7 +59,7 @@ const TodayWeather = () => {
             <div style={style.MenuLists}>
               <MenuBack />
               <MenuPrefecture TodayWeatherResult={weatherResult} />
-              <MenuSend />
+              <MenuSend onClick={sendButton} />
             </div>
             <Table TodayWeatherResult={weatherResult} />
             <InputFormImage />
