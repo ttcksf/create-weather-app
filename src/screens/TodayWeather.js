@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Table from "../components/Table";

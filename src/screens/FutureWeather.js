@@ -16,7 +16,10 @@ const FutureWeather = () => {
       <Header />
       <div>
         <div style={style.FutureWrapper}>
-          <MenuBack />
+          <div style={style.MenuLists}>
+            <MenuBack />
+          </div>
+          {/* <Table /> */}
         </div>
 
         <h1>{ForecastWeather.city.name}</h1>
@@ -29,6 +32,12 @@ const style = {
   FutureWrapper: {
     width: "80%",
     margin: "0 auto",
+  },
+  MenuLists: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "15px 0",
   },
 };
 export default FutureWeather;
