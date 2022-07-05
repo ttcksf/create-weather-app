@@ -13,7 +13,7 @@ const SelectPlace = () => {
   const navigate = useNavigate();
 
   const submitPrefecture = () => {
-    navigate("today-weather", {
+    navigate("/today-weather", {
       state: {
         prefecture: prefecture,
       },
@@ -44,7 +44,7 @@ const SelectPlace = () => {
             {console.log("pre: ")}
             {console.log(prefecture)}
 
-            <button className="btn" onClick={submitPrefecture}>
+            <button className="btn" onClick={() => submitPrefecture()}>
               送信
             </button>
           </div>
