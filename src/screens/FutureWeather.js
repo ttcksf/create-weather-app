@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Table from "../components/Table";
 import Footer from "../components/Footer";
 import MenuBack from "../components/Menu/MenuBack";
-import MenuPrefecture from "../components/Menu/MenuPrefecture";
 
 const FutureWeather = () => {
   const location = useLocation();
@@ -19,6 +18,7 @@ const FutureWeather = () => {
 
     return dt_txt;
   };
+
   return (
     <>
       <Header />
@@ -30,15 +30,15 @@ const FutureWeather = () => {
           {ForecastWeatherResult.list && (
             <div>
               <p style={style.FutureWeatherTitle}>
-                <span>{FutureDate(9)}</span>{" "}
+                <span>{FutureDate(8)}</span>{" "}
                 <span>{ForecastWeatherResult.city.name}</span>の天気予報
               </p>
-              <Table weatherResult={ForecastWeatherResult} />
+              <Table weatherResult={ForecastWeatherResult} index={8} />
               <p style={style.FutureWeatherTitle}>
                 <span>{FutureDate(16)}</span>{" "}
                 <span>{ForecastWeatherResult.city.name}</span>の天気予報
               </p>
-              <Table weatherResult={ForecastWeatherResult} />
+              <Table weatherResult={ForecastWeatherResult} index={16} />
             </div>
           )}
         </div>

@@ -61,10 +61,10 @@ const TodayWeather = () => {
               <MenuPrefecture weatherResult={weatherResult} />
               <MenuSend onClick={sendButton} />
             </div>
-            <Table weatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} index={0} />
             <InputFormImage />
             <InputFormText />
-            <Table weatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} index={0} />
           </div>
         )}
       </div>

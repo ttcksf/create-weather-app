@@ -4,10 +4,12 @@ import Good from "./HumanIcons/Good";
 import VeryBad from "./HumanIcons/VeryBad";
 import VeryGood from "./HumanIcons/VeryGood";
 
-const Table = ({ weatherResult }) => {
+const Table = ({ weatherResult, index }) => {
   const TodayWeatherDate = () => {
     let times = [];
-    for (let i = 0; i < 8; i++) {
+    let j = index;
+    for (let i = j; i < index + 8; i++) {
+      console.log(j);
       times.push(
         <th style={style.th} key={i}>
           {weatherResult.list[i].dt_txt.substring(11, 16)}
@@ -123,5 +125,4 @@ const style = {
     background: "rgba(196,196,196,0.5)",
   },
 };
-
 export default Table;
