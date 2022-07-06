@@ -50,24 +50,73 @@ const Table = ({ weatherResult, index }) => {
     return todayForecast;
   };
 
-  const HumanIconsPattern = (i) => {
-    if (weatherResult.list[i].main.grnd_level >= 1012) {
-      return <VeryGood />;
-    } else if (
-      weatherResult.list[i].main.grnd_level >= 1009 &&
-      weatherResult.list[i].main.grnd_level < 1012
-    ) {
-      return <Good />;
-    } else if (
-      weatherResult.list[i].main.grnd_level >= 1003 &&
-      weatherResult.list[i].main.grnd_level < 1009
-    ) {
-      return <Bad />;
-    } else if (weatherResult.list[i].main.grnd_level < 1003) {
-      return <VeryBad />;
-    } else {
-      return <Good />;
+  const HumanIconsPattern = () => {
+    let grndLevel = [];
+    let j = index;
+
+    for (let i = j; i < index + 8; i++) {
+      if (weatherResult.list[i].main.grnd_level >= 1012) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <VeryGood />
+          </td>
+        );
+      } else if (
+        weatherResult.list[i].main.grnd_level >= 1009 &&
+        weatherResult.list[i].main.grnd_level < 1012
+      ) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Good />
+          </td>
+        );
+      } else if (
+        weatherResult.list[i].main.grnd_level >= 1003 &&
+        weatherResult.list[i].main.grnd_level < 1009
+      ) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Bad />
+          </td>
+        );
+      } else if (weatherResult.list[i].main.grnd_level < 1003) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <VeryBad />
+          </td>
+        );
+      } else {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Good />
+          </td>
+        );
+      }
+
+      // if (weatherResult.list[i].main.grnd_level >= 1012) {
+      //   return <VeryGood />;
+      // } else if (
+      //   weatherResult.list[i].main.grnd_level >= 1009 &&
+      //   weatherResult.list[i].main.grnd_level < 1012
+      // ) {
+      //   return <Good />;
+      // } else if (
+      //   weatherResult.list[i].main.grnd_level >= 1003 &&
+      //   weatherResult.list[i].main.grnd_level < 1009
+      // ) {
+      //   return <Bad />;
+      // } else if (weatherResult.list[i].main.grnd_level < 1003) {
+      //   return <VeryBad />;
+      // } else {
+      //   return <Good />;
+      // }
     }
+    return grndLevel;
   };
   return (
     <div style={style.tableWrap}>
@@ -83,14 +132,16 @@ const Table = ({ weatherResult, index }) => {
           </tr>
           <tr>
             <td style={style.tdSecond}>気圧</td>
-            <td style={style.tdSecond}>{HumanIconsPattern(0)}</td>
+            {HumanIconsPattern()}
+
+            {/* <td style={style.tdSecond}>{HumanIconsPattern(0)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(1)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(2)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(3)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(4)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(5)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(6)}</td>
-            <td style={style.tdSecond}>{HumanIconsPattern(7)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(7)}</td> */}
           </tr>
         </tbody>
       </table>
