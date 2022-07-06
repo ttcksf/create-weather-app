@@ -4,13 +4,13 @@ import Good from "./HumanIcons/Good";
 import VeryBad from "./HumanIcons/VeryBad";
 import VeryGood from "./HumanIcons/VeryGood";
 
-const Table = ({ TodayWeatherResult }) => {
+const Table = ({ weatherResult }) => {
   const TodayWeatherDate = () => {
     let times = [];
     for (let i = 0; i < 8; i++) {
       times.push(
         <th style={style.th} key={i}>
-          {TodayWeatherResult.list[i].dt_txt.substring(11, 16)}
+          {weatherResult.list[i].dt_txt.substring(11, 16)}
         </th>
       );
     }
@@ -26,7 +26,7 @@ const Table = ({ TodayWeatherResult }) => {
             <img
               src={
                 "http://openweathermap.org/img/wn/" +
-                TodayWeatherResult.list[i].weather[0].icon +
+                weatherResult.list[i].weather[0].icon +
                 ".png"
               }
               alt=""
@@ -34,13 +34,13 @@ const Table = ({ TodayWeatherResult }) => {
           </p>
           <p>
             <span className="cRed">
-              {Math.floor(TodayWeatherResult.list[i].main.temp_max)}
+              {Math.floor(weatherResult.list[i].main.temp_max)}
             </span>
             <span className="cBlue">
-              {Math.floor(TodayWeatherResult.list[i].main.temp_min)}
+              {Math.floor(weatherResult.list[i].main.temp_min)}
             </span>
           </p>
-          <p>{TodayWeatherResult.list[i].pop * 100 + "%"}</p>
+          <p>{weatherResult.list[i].pop * 100 + "%"}</p>
         </td>
       );
     }
@@ -48,19 +48,19 @@ const Table = ({ TodayWeatherResult }) => {
   };
 
   const HumanIconsPattern = (i) => {
-    if (TodayWeatherResult.list[i].main.grnd_level >= 1012) {
+    if (weatherResult.list[i].main.grnd_level >= 1012) {
       return <VeryGood />;
     } else if (
-      TodayWeatherResult.list[i].main.grnd_level >= 1009 &&
-      TodayWeatherResult.list[i].main.grnd_level < 1012
+      weatherResult.list[i].main.grnd_level >= 1009 &&
+      weatherResult.list[i].main.grnd_level < 1012
     ) {
       return <Good />;
     } else if (
-      TodayWeatherResult.list[i].main.grnd_level >= 1003 &&
-      TodayWeatherResult.list[i].main.grnd_level < 1009
+      weatherResult.list[i].main.grnd_level >= 1003 &&
+      weatherResult.list[i].main.grnd_level < 1009
     ) {
       return <Bad />;
-    } else if (TodayWeatherResult.list[i].main.grnd_level < 1003) {
+    } else if (weatherResult.list[i].main.grnd_level < 1003) {
       return <VeryBad />;
     } else {
       return <Good />;

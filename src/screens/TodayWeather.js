@@ -58,13 +58,13 @@ const TodayWeather = () => {
           <div style={style.TodayWrapper}>
             <div style={style.MenuLists}>
               <MenuBack />
-              <MenuPrefecture TodayWeatherResult={weatherResult} />
+              <MenuPrefecture weatherResult={weatherResult} />
               <MenuSend onClick={sendButton} />
             </div>
-            <Table TodayWeatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} />
             <InputFormImage />
             <InputFormText />
-            <Table TodayWeatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} />
           </div>
         )}
       </div>
