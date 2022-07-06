@@ -9,7 +9,6 @@ const Table = ({ weatherResult, index }) => {
     let times = [];
     let j = index;
     for (let i = j; i < index + 8; i++) {
-      console.log(j);
       times.push(
         <th style={style.th} key={i}>
           {weatherResult.list[i].dt_txt.substring(11, 16)}
@@ -21,7 +20,9 @@ const Table = ({ weatherResult, index }) => {
 
   const TodayWeatherForecast = () => {
     let todayForecast = [];
-    for (let i = 0; i < 8; i++) {
+    let j = index;
+
+    for (let i = j; i < index + 8; i++) {
       todayForecast.push(
         <td style={style.tdFirst} key={i}>
           <p>
