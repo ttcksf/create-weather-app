@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import Table from "../components/Table";
@@ -58,13 +58,13 @@ const TodayWeather = () => {
           <div style={style.TodayWrapper}>
             <div style={style.MenuLists}>
               <MenuBack />
-              <MenuPrefecture TodayWeatherResult={weatherResult} />
+              <MenuPrefecture weatherResult={weatherResult} />
               <MenuSend onClick={sendButton} />
             </div>
-            <Table TodayWeatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} index={0} />
             <InputFormImage />
             <InputFormText />
-            <Table TodayWeatherResult={weatherResult} />
+            <Table weatherResult={weatherResult} index={0} />
           </div>
         )}
       </div>

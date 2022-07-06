@@ -4,13 +4,14 @@ import Good from "./HumanIcons/Good";
 import VeryBad from "./HumanIcons/VeryBad";
 import VeryGood from "./HumanIcons/VeryGood";
 
-const Table = ({ TodayWeatherResult }) => {
+const Table = ({ weatherResult, index }) => {
   const TodayWeatherDate = () => {
     let times = [];
-    for (let i = 0; i < 8; i++) {
+    let j = index;
+    for (let i = j; i < index + 8; i++) {
       times.push(
         <th style={style.th} key={i}>
-          {TodayWeatherResult.list[i].dt_txt.substring(11, 16)}
+          {weatherResult.list[i].dt_txt.substring(11, 16)}
         </th>
       );
     }
@@ -19,14 +20,16 @@ const Table = ({ TodayWeatherResult }) => {
 
   const TodayWeatherForecast = () => {
     let todayForecast = [];
-    for (let i = 0; i < 8; i++) {
+    let j = index;
+
+    for (let i = j; i < index + 8; i++) {
       todayForecast.push(
         <td style={style.tdFirst} key={i}>
           <p>
             <img
               src={
                 "http://openweathermap.org/img/wn/" +
-                TodayWeatherResult.list[i].weather[0].icon +
+                weatherResult.list[i].weather[0].icon +
                 ".png"
               }
               alt=""
@@ -34,37 +37,86 @@ const Table = ({ TodayWeatherResult }) => {
           </p>
           <p>
             <span className="cRed">
-              {Math.floor(TodayWeatherResult.list[i].main.temp_max)}
+              {Math.floor(weatherResult.list[i].main.temp_max)}
             </span>
             <span className="cBlue">
-              {Math.floor(TodayWeatherResult.list[i].main.temp_min)}
+              {Math.floor(weatherResult.list[i].main.temp_min)}
             </span>
           </p>
-          <p>{TodayWeatherResult.list[i].pop * 100 + "%"}</p>
+          <p>{weatherResult.list[i].pop * 100 + "%"}</p>
         </td>
       );
     }
     return todayForecast;
   };
 
-  const HumanIconsPattern = (i) => {
-    if (TodayWeatherResult.list[i].main.grnd_level >= 1012) {
-      return <VeryGood />;
-    } else if (
-      TodayWeatherResult.list[i].main.grnd_level >= 1009 &&
-      TodayWeatherResult.list[i].main.grnd_level < 1012
-    ) {
-      return <Good />;
-    } else if (
-      TodayWeatherResult.list[i].main.grnd_level >= 1003 &&
-      TodayWeatherResult.list[i].main.grnd_level < 1009
-    ) {
-      return <Bad />;
-    } else if (TodayWeatherResult.list[i].main.grnd_level < 1003) {
-      return <VeryBad />;
-    } else {
-      return <Good />;
+  const HumanIconsPattern = () => {
+    let grndLevel = [];
+    let j = index;
+
+    for (let i = j; i < index + 8; i++) {
+      if (weatherResult.list[i].main.grnd_level >= 1012) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <VeryGood />
+          </td>
+        );
+      } else if (
+        weatherResult.list[i].main.grnd_level >= 1009 &&
+        weatherResult.list[i].main.grnd_level < 1012
+      ) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Good />
+          </td>
+        );
+      } else if (
+        weatherResult.list[i].main.grnd_level >= 1003 &&
+        weatherResult.list[i].main.grnd_level < 1009
+      ) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Bad />
+          </td>
+        );
+      } else if (weatherResult.list[i].main.grnd_level < 1003) {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <VeryBad />
+          </td>
+        );
+      } else {
+        grndLevel.push(
+          <td style={style.tdSecond} key={i}>
+            {" "}
+            <Good />
+          </td>
+        );
+      }
+
+      // if (weatherResult.list[i].main.grnd_level >= 1012) {
+      //   return <VeryGood />;
+      // } else if (
+      //   weatherResult.list[i].main.grnd_level >= 1009 &&
+      //   weatherResult.list[i].main.grnd_level < 1012
+      // ) {
+      //   return <Good />;
+      // } else if (
+      //   weatherResult.list[i].main.grnd_level >= 1003 &&
+      //   weatherResult.list[i].main.grnd_level < 1009
+      // ) {
+      //   return <Bad />;
+      // } else if (weatherResult.list[i].main.grnd_level < 1003) {
+      //   return <VeryBad />;
+      // } else {
+      //   return <Good />;
+      // }
     }
+    return grndLevel;
   };
   return (
     <div style={style.tableWrap}>
@@ -80,14 +132,16 @@ const Table = ({ TodayWeatherResult }) => {
           </tr>
           <tr>
             <td style={style.tdSecond}>気圧</td>
-            <td style={style.tdSecond}>{HumanIconsPattern(0)}</td>
+            {HumanIconsPattern()}
+
+            {/* <td style={style.tdSecond}>{HumanIconsPattern(0)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(1)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(2)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(3)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(4)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(5)}</td>
             <td style={style.tdSecond}>{HumanIconsPattern(6)}</td>
-            <td style={style.tdSecond}>{HumanIconsPattern(7)}</td>
+            <td style={style.tdSecond}>{HumanIconsPattern(7)}</td> */}
           </tr>
         </tbody>
       </table>
@@ -123,5 +177,4 @@ const style = {
     background: "rgba(196,196,196,0.5)",
   },
 };
-
 export default Table;

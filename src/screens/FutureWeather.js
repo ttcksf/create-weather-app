@@ -9,17 +9,39 @@ const FutureWeather = () => {
   const location = useLocation();
   console.log("futurelocation: ");
   console.log(location.state.weatherResult);
-  const ForecastWeather = location.state.weatherResult;
+  const ForecastWeatherResult = location.state.weatherResult;
+
+  const FutureDate = (i) => {
+    let dt_txt = ForecastWeatherResult.list[i].dt_txt;
+    dt_txt =
+      Number(dt_txt.slice(5, 7)) + "月" + Number(dt_txt.slice(8, 10)) + "日";
+
+    return dt_txt;
+  };
 
   return (
     <>
       <Header />
       <div>
         <div style={style.FutureWrapper}>
-          <MenuBack />
+          <div style={style.MenuLists}>
+            <MenuBack />
+          </div>
+          {ForecastWeatherResult.list && (
+            <div>
+              <p style={style.FutureWeatherTitle}>
+                <span>{FutureDate(8)}</span>{" "}
+                <span>{ForecastWeatherResult.city.name}</span>の天気予報
+              </p>
+              <Table weatherResult={ForecastWeatherResult} index={8} />
+              <p style={style.FutureWeatherTitle}>
+                <span>{FutureDate(16)}</span>{" "}
+                <span>{ForecastWeatherResult.city.name}</span>の天気予報
+              </p>
+              <Table weatherResult={ForecastWeatherResult} index={16} />
+            </div>
+          )}
         </div>
-
-        <h1>{ForecastWeather.city.name}</h1>
       </div>
       <Footer />
     </>
@@ -29,6 +51,15 @@ const style = {
   FutureWrapper: {
     width: "80%",
     margin: "0 auto",
+  },
+  MenuLists: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    margin: "15px 0",
+  },
+  FutureWeatherTitle: {
+    margin: "10px 0",
   },
 };
 export default FutureWeather;
